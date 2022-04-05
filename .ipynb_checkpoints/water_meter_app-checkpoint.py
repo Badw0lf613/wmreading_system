@@ -57,7 +57,7 @@ def format_predictions(img_path, results, num_classes=8):
 
   fig = plt.figure(figsize=(7, 7))
   plt.imshow(img)
-  print('df['class'].values',df['class'].values)
+  print('df.values',df['class'].values)
   reading = ''.join(str(s) for s in df['class'].values)
   if len(reading) > 5:
     reading = reading[:-3] + '.' + reading[-3:]
