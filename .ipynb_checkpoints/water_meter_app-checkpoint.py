@@ -59,11 +59,12 @@ def format_predictions(img_path, results, num_classes=8):
   plt.imshow(img)
   print('df.values',df['class'].values)
   reading = ''.join(str(s) for s in df['class'].values)
-  if len(reading) > 5:
-    reading = reading[:-3] + '.' + reading[-3:]
+  # if len(reading) > 5:
+  #   reading = reading[:-3] + '.' + reading[-3:]
+  reading = reading[2:]
   try:
     reading = float(reading)
-    plt.title('Reading ' +  str(reading) + " m\u00b3" + "\n" + str(df['class'].values))
+    plt.title("Predict labels: " + str(df['class'].values) + "\n" + 'Reading: ' +  str(reading) + " m\u00b3")
   except:
     plt.title('Is this a valid water meter image...?')
   plt.axis('off')
