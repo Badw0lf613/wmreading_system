@@ -61,7 +61,7 @@ def format_predictions(img_path, results, num_classes=8):
   reading = ''
   for s in df['class'].values:
     # 防止把仪表识别结果误加入读数中
-    if s != '10':
+    if s != 10:
         reading = reading.join(str(s))
   # reading = ''.join(str(s) for s in df['class'].values)
   # if len(reading) > 5:
