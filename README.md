@@ -8,6 +8,6 @@ streamlit
 ## 演示地址
 https://share.streamlit.io/badw0lf613/wmreading_system/water_meter_app.py
 ## 运行结果
-[](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result.png)
+![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result.png)
 # 待完成
 - [ ] 同页面显示原图片以及识别结果
