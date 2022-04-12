@@ -98,4 +98,4 @@ def predict(inp):
     format_predictions(temp_file.name, results)
 
 predict(buffer)
-predict(buffer)
+# predict(buffer)
