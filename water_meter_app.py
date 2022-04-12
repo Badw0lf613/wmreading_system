@@ -85,7 +85,7 @@ location = 'weights/best.pt'
 best_run = os.path.join(os.getcwd(), 'yolov5', location)
 device = torch.cuda.get_device_properties(0).name if torch.cuda.is_available() else 'cpu'
 
-#model = torch.hub.load('ultralytics/yolov5', 'custom', path=location, device=device, force_reload=False)
+# model = torch.hub.load('ultralytics/yolov5', 'custom', path=location, device=device, force_reload=False)
 src = 'ultralytics/yolov5'
 model = load_model(src, path=location, device=device) 
 
