@@ -39,13 +39,9 @@ def show_grid(image_paths):
 
 def format_predictions(img_path, results, num_classes=8):
   """
-  Format the predictions as they
-  are not in order of the meter
-  reading
-  For some reason inside this app, the 
-  detect script generates more rows than
-  it does when tested in Colab. So, I have
-  taken the top num_classes records
+  Format the predictions as they are not in order of the meter reading
+  For some reason inside this app, the  detect script generates more rows than
+  it does when tested in Colab. So, I have taken the top num_classes records
   """
   if not isinstance(results, str):
     df = results.pandas().xyxy[0].head(num_classes)
@@ -101,4 +97,5 @@ def predict(inp):
     results = model.to(device)(temp_file.name)
     format_predictions(temp_file.name, results)
 
+predict(buffer)
 predict(buffer)
