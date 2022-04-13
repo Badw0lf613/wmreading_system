@@ -28,7 +28,7 @@ def get_subdirs_without_labels(b='.'):
     for d in os.listdir(b):
         bd = os.path.join(b, d)
         if os.path.isdir(bd):
-            st.write('bd', bd)
+            # st.write('bd', bd)
             result.append(bd)
     return result
 
@@ -120,11 +120,13 @@ if __name__ == '__main__':
                 st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
-                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
+                        if img == 'labels':
+                            break
                         img_tmp = img
-                        st.write('img_tmp', img_tmp)
+                        # st.write('img_tmp', img_tmp)
                         st.image(str(Path(f'{get_detection_folder()}') / img))
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / img)
