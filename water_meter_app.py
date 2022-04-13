@@ -15,6 +15,7 @@ import cv2
 from tempfile import NamedTemporaryFile
 import warnings
 from yolov5 import detect_yolov5
+from PIL import Image
 
 
 # ap = argparse.ArgumentParser()
