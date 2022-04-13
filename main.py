@@ -110,13 +110,14 @@ if __name__ == '__main__':
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
+                        # 对图片路径做处理得到txt路径
                         txtpath = str(Path(f'{get_detection_folder()}') / img)
                         txtpath_list = txtpath.split('/')[0:-1]
                         st.write(txtpath_list)
                         txtpath = ''
                         for l in txtpath_list:
                             txtpath = txtpath + l + '/'
-                        txtpath = txtpath + img
+                        txtpath = txtpath + img + 'labels/'
                         txtpath = txtpath.replace(".jpg",".txt")
                         st.write(txtpath)
                         with open(txtpath, "r") as f:  # 打开文件
