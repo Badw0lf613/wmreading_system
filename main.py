@@ -118,6 +118,7 @@ if __name__ == '__main__':
                     txtpath = ''
                     for l in txtpath_list:
                         txtpath = txtpath + l + '/'
+                    st.write(os.listdir(get_detection_folder()))
                     txtpath = txtpath + 'labels/' + os.listdir(get_detection_folder())[-1]
                     txtpath = txtpath.replace(".jpg",".txt")
                     # st.write(txtpath)
