@@ -8,7 +8,7 @@ streamlit
 ## 演示地址
 https://share.streamlit.io/badw0lf613/wmreading_system/main.py
 ## 运行结果
-![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result1.png)
-![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result2.png)
+![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result3.png)
+![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result4.png)
 # 待完成
 - [x] 同页面显示原图片以及识别结果
