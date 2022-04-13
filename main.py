@@ -109,7 +109,13 @@ if __name__ == '__main__':
                 st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
-                        txtpath = str(Path(f'{get_detection_folder()}') / img).replace(".jpg", ".txt")
+                        # txtpath = str(Path(f'{get_detection_folder()}').split('/')
+                        txtpath = str(Path(f'{get_detection_folder()}') / img)
+                        txtpath_list = txtpath.split('/')[:-1]
+                        for l in txtpath_list:
+                            txtpath = '' + l + '/'
+                        txtpath = txtpath.replace(".jpg",".txt")
+                        st.write(txtpath)
                         with open(txtpath, "r") as f:  # 打开文件
                             data = f.read()  # 读取文件
                             print(data)
