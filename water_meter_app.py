@@ -108,8 +108,8 @@ if __name__ == '__main__':
 
   # model = torch.hub.load('ultralytics/yolov5', 'custom', path=location, device=device, force_reload=False)
   src = 'ultralytics/yolov5'
-  model = load_model(src, path=location, device=device) ng', 'jpeg', 'jpg'])
+  model = load_model(src, path=location, device=device)
   warnings.filterwarnings('ignore')
   st.title('Water meter reading system based on YOLOv5')
-  buffer = st.file_uploader("Upload water meter reading image", type=['p
+  buffer = st.file_uploader("Upload water meter reading image", type=['png', 'jpeg', 'jpg'])
   predict(buffer)
