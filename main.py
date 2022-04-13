@@ -117,10 +117,10 @@ if __name__ == '__main__':
             detect(opt)
 
             if source_index == 0:
-                st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
                     # st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    st.header('下为检测后的图片')
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         if img == 'labels':
@@ -139,10 +139,12 @@ if __name__ == '__main__':
                     txtpath = txtpath + 'labels/' + img_tmp
                     txtpath = txtpath.replace(".jpg",".txt")
                     # st.write(txtpath)
+                    st.header('下为检测后的标签')
                     with open(txtpath, "r") as f:  # 打开文件
-                        data = f.read()  # 读取文件
-                        print(data)
-                    st.write(data)
+                        for line in f.readlines():
+                            line = line.strip('\n')  #去掉列表中每一个元素的换行符
+                            st.write(line)
+                            print(line)
                     st.balloons()
             else:
                 st.header('下为检测后的视频')
