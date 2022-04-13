@@ -105,7 +105,7 @@ def predict(inp):
 #       results = model.to(device)(temp_file.name)
 #       format_predictions(temp_file.name, results)
       weights = 'weights/best.pt'
-      detect(weights, temp_file)
+      detect(weights, temp_file.name)
 
 if __name__ == '__main__':
   yolo_path = os.path.join(os.getcwd(), 'yolov5')
@@ -119,5 +119,5 @@ if __name__ == '__main__':
   model = load_model(src, path=location, device=device)
   warnings.filterwarnings('ignore')
   st.title('Water meter reading system based on YOLOv5')
-  buffer = st.file_uploader("Upload water meter reading image", type=['png', 'jpeg', 'jpg'])
+  buffer = st.file_uploader("Upload image", type=['png', 'jpeg', 'jpg'])
   predict(buffer)
