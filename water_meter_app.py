@@ -14,6 +14,7 @@ import cv2
 # import argparse
 from tempfile import NamedTemporaryFile
 import warnings
+from yolov5-master import detect
 
 
 # ap = argparse.ArgumentParser()
@@ -76,7 +77,12 @@ def load_model(src, path, device, reload=False):
 
 @st.cache
 def detect(weights, source):
-  os.system("python yolov5-master/detect.py --weights %s --source %s" % (weights, source))
+#   os.system("python yolov5-master/detect.py --weights %s --source %s" % (weights, source))
+  im0 = main_yolov5(weights, source)
+  fig = plt.figure(figsize=(7, 7))
+  plt.imshow(im0)
+  plt.axis('off')
+  st.pyplot(fig)
 
 @st.cache(ttl=24*3600, suppress_st_warning=True, show_spinner=False)
 def predict(inp):
