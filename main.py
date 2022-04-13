@@ -148,7 +148,8 @@ if __name__ == '__main__':
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
                             if line[:2].strip() == "10":
                                 line_list.append("counter")
-                            line_list.append(line[:2].strip())
+                            else:
+                                line_list.append(line[:2].strip())
                             line_list2.append(line[2:].strip())
                             print(line)
                     st.write(line_list)
