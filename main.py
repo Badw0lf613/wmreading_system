@@ -113,8 +113,9 @@ if __name__ == '__main__':
                         txtpath = str(Path(f'{get_detection_folder()}') / img)
                         txtpath_list = txtpath.split('/')[0:-1]
                         st.write(txtpath_list)
+                        txtpath = ''
                         for l in txtpath_list:
-                            txtpath = '' + l + '/'
+                            txtpath = txtpath + l + '/'
                         txtpath = txtpath.replace(".jpg",".txt")
                         st.write(txtpath)
                         with open(txtpath, "r") as f:  # 打开文件
