@@ -92,10 +92,19 @@ def predict(inp):
 # format_predictions(args['img'], results)
   if inp:
     # https://discuss.streamlit.io/t/image-upload-problem/4810/5
-    temp_file = NamedTemporaryFile(delete=True)
-    temp_file.write(inp.getvalue())
-    results = model.to(device)(temp_file.name)
-    format_predictions(temp_file.name, results)
-
+    col1, col2 = st.columns(2)
+    with col1:
+      st.header("Original pic")
+      temp_file = NamedTemporaryFile(delete=True)
+      temp_file.write(inp.getvalue())
+      results = model.to(device)(temp_file.name)
+      format_predictions(temp_file.name, results)
+    with col2:
+      st.header("Predict pic")
+      temp_file = NamedTemporaryFile(delete=True)
+      temp_file.write(inp.getvalue())
+      results = model.to(device)(temp_file.name)
+      format_predictions(temp_file.name, results)
+      
 predict(buffer)
 # predict(buffer)
