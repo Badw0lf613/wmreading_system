@@ -109,9 +109,11 @@ if __name__ == '__main__':
                 st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
+                        st.write(str(Path(f'{get_detection_folder()}') / img))
                         st.image(str(Path(f'{get_detection_folder()}') / img))
-
-                    st.balloons()
+                    # txt = st.text_area(str(Path(f'{get_detection_folder()}')
+                    # st.write('Sentiment:', run_sentiment_analysis(txt))
+                    # st.balloons()
             else:
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
