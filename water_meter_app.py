@@ -78,7 +78,7 @@ def load_model(src, path, device, reload=False):
 @st.cache
 def detect(weights, source):
 #   os.system("python yolov5-master/detect.py --weights %s --source %s" % (weights, source))
-  im0 = detect_yolov5.main_yolov5(weights, source)
+  im0 = detect_yolov5.run(weights, source)
   fig = plt.figure(figsize=(7, 7))
   plt.imshow(im0)
   plt.axis('off')
