@@ -125,7 +125,7 @@ def detect(opt, save_img=False):
                     if save_img or view_img:  # Add bbox to image
                         # !!!change labels format
                         # label = f'{names[int(cls)]} {conf:.2f}'
-                        label = f'{names[int(cls)]}'
+                        label = f'{names[int(cls)][:1]}'
                         plot_one_box(xyxy, im0, label=label,
                                      color=colors[int(cls)], line_thickness=3)
 
