@@ -162,8 +162,9 @@ if __name__ == '__main__':
                         df.iloc[i,0] = l
                         df.iloc[i,1] = p
                         i += 1
-                    df.style.set_properties(**{'text-align':'center'})
-                    st.write(df.to_html(escape=False), unsafe_allow_html=True)
+                    html = df.to_html(escape=False)
+                    html2 = html.replace('<tr>', '<tr align="center">')
+                    st.write(html2, unsafe_allow_html=True)
                     st.balloons()
             else:
                 st.header('下为检测后的视频')
