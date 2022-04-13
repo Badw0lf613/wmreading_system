@@ -15,7 +15,6 @@ import cv2
 from tempfile import NamedTemporaryFile
 import warnings
 
-warnings.filterwarnings('ignore')
 
 # ap = argparse.ArgumentParser()
 # ap.add_argument("-i", "--img", required=False, help="path to image")
@@ -78,19 +77,7 @@ def load_model(src, path, device, reload=False):
 @st.cache
 def detect(img):
   os.system("python test.py -i %s -b %s" % (inputparam1, inputparam2))
-  return torch.hub.load(src, 'custom', path=path, device=device, force_reload=reload)
 
-yolo_path = os.path.join(os.getcwd(), 'yolov5')
-# location = 'runs/train/yolov5x_water_meter/weights/best.pt'
-location = 'weights/best.pt'
-best_run = os.path.join(os.getcwd(), 'yolov5', location)
-device = torch.cuda.get_device_properties(0).name if torch.cuda.is_available() else 'cpu'
-
-# model = torch.hub.load('ultralytics/yolov5', 'custom', path=location, device=device, force_reload=False)
-src = 'ultralytics/yolov5'
-model = load_model(src, path=location, device=device) 
-
-buffer = st.file_uploader("Upload water meter reading image", type=['png', 'jpeg', 'jpg'])
 @st.cache(ttl=24*3600, suppress_st_warning=True, show_spinner=False)
 def predict(inp):
 # results = model(args['img'])
@@ -111,7 +98,19 @@ def predict(inp):
       temp_file.write(inp.getvalue())
       results = model.to(device)(temp_file.name)
       format_predictions(temp_file.name, results)
-      
-st.header(buffer)
-predict(buffer)
-# predict(buffer)
+
+if __name__ == '__main__':
+  yolo_path = os.path.join(os.getcwd(), 'yolov5')
+  # location = 'runs/train/yolov5x_water_meter/weights/best.pt'
+  location = 'weights/best.pt'
+  best_run = os.path.join(os.getcwd(), 'yolov5', location)
+  device = torch.cuda.get_device_properties(0).name if torch.cuda.is_available() else 'cpu'
+
+  # model = torch.hub.load('ultralytics/yolov5', 'custom', path=location, device=device, force_reload=False)
+  src = 'ultralytics/yolov5'
+  model = load_model(src, path=location, device=device) 
+
+  buffer = st.file_uploader("Upload water meter reading image", type=['png', 'jpeg', 'jpg'])
+  warnings.filterwarnings('ignore')
+  st.header(buffer)
+  predict(buffer)
