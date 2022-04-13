@@ -135,17 +135,15 @@ if __name__ == '__main__':
                     txtpath = ''
                     for l in txtpath_list:
                         txtpath = txtpath + l + '/'
-                    st.write(img_tmp)
+                    # st.write(img_tmp)
                     txtpath = txtpath + 'labels/' + img_tmp
                     txtpath = txtpath.replace(".jpg",".txt")
                     # st.write(txtpath)
                     with open(txtpath, "r") as f:  # 打开文件
                         data = f.read()  # 读取文件
                         print(data)
-                    txt = st.text_area(data)
-                    # txt = st.text_area(str(Path(f'{get_detection_folder()}')
-                    # st.write('Sentiment:', run_sentiment_analysis(txt))
-                    # st.balloons()
+                    st.write(data)
+                    st.balloons()
             else:
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
