@@ -100,11 +100,13 @@ def predict(inp):
       results = model.to(device)(temp_file.name)
       format_predictions(temp_file.name, results)
     with col2:
+#       st.header("Predict picture")
       st.header("Predict picture")
       temp_file = NamedTemporaryFile(delete=True)
       temp_file.write(inp.getvalue())
       results = model.to(device)(temp_file.name)
       format_predictions(temp_file.name, results)
       
+st.header(buffer)
 predict(buffer)
 # predict(buffer)
