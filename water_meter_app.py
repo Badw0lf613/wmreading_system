@@ -106,6 +106,7 @@ def predict(inp):
 #       format_predictions(temp_file.name, results)
       weights = 'weights/best.pt'
 #       detect(weights, temp_file.name)
+      img = Image.open(inp)
       detect(weights, inp)
 
 if __name__ == '__main__':
