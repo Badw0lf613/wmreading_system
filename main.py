@@ -152,8 +152,8 @@ if __name__ == '__main__':
                                 line_list.append(line[:2].strip())
                             line_list2.append(line[2:].strip())
                             print(line)
-                    st.write(line_list)
-                    st.write(line_list2)
+                    # st.write(line_list)
+                    # st.write(line_list2)
                     df = pd.DataFrame(data=np.zeros((len(line_list), 2)),
                       columns=['Labels', 'Position'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
@@ -162,6 +162,7 @@ if __name__ == '__main__':
                         df.iloc[i,0] = l
                         df.iloc[i,1] = p
                         i += 1
+                    df.style.set_properties(**{'text-align':'center'})
                     st.write(df.to_html(escape=False), unsafe_allow_html=True)
                     st.balloons()
             else:
