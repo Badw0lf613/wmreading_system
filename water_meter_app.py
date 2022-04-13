@@ -75,6 +75,11 @@ def format_predictions(img_path, results, num_classes=8):
 def load_model(src, path, device, reload=False):
   return torch.hub.load(src, 'custom', path=path, device=device, force_reload=reload)
 
+@st.cache
+def detect(img):
+  os.system("python test.py -i %s -b %s" % (inputparam1, inputparam2))
+  return torch.hub.load(src, 'custom', path=path, device=device, force_reload=reload)
+
 yolo_path = os.path.join(os.getcwd(), 'yolov5')
 # location = 'runs/train/yolov5x_water_meter/weights/best.pt'
 location = 'weights/best.pt'
