@@ -111,20 +111,20 @@ if __name__ == '__main__':
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         # 对图片路径做处理得到txt路径
-                        txtpath = str(Path(f'{get_detection_folder()}') / img)
-                        txtpath_list = txtpath.split('/')[0:-1]
-                        # st.write(txtpath_list)
-                        txtpath = ''
-                        for l in txtpath_list:
-                            txtpath = txtpath + l + '/'
-                        txtpath = txtpath + 'labels/' + img
-                        txtpath = txtpath.replace(".jpg",".txt")
-                        # st.write(txtpath)
-                        with open(txtpath, "r") as f:  # 打开文件
-                            data = f.read()  # 读取文件
-                            print(data)
                         st.image(str(Path(f'{get_detection_folder()}') / img))
-                        txt = st.text_area(data)
+                    txtpath = str(Path(f'{get_detection_folder()}') / img)
+                    txtpath_list = txtpath.split('/')[0:-1]
+                    # st.write(txtpath_list)
+                    txtpath = ''
+                    for l in txtpath_list:
+                        txtpath = txtpath + l + '/'
+                    txtpath = txtpath + 'labels/' + img
+                    txtpath = txtpath.replace(".jpg",".txt")
+                    # st.write(txtpath)
+                    with open(txtpath, "r") as f:  # 打开文件
+                        data = f.read()  # 读取文件
+                        print(data)
+                    txt = st.text_area(data)
                     # txt = st.text_area(str(Path(f'{get_detection_folder()}')
                     # st.write('Sentiment:', run_sentiment_analysis(txt))
                     # st.balloons()
