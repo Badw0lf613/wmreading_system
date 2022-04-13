@@ -76,7 +76,7 @@ def load_model(src, path, device, reload=False):
 
 @st.cache
 def detect(weights, source):
-  os.system("python yolov5-master/detect.py --weights %s --source %s" % (inputparam1, inputparam2))
+  os.system("python yolov5-master/detect.py --weights %s --source %s" % (weights, source))
 
 @st.cache(ttl=24*3600, suppress_st_warning=True, show_spinner=False)
 def predict(inp):
