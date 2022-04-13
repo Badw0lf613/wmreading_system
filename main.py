@@ -164,7 +164,8 @@ if __name__ == '__main__':
                         i += 1
                     html = df.to_html(escape=False)
                     html2 = html.replace('<tr>', '<tr align="center">')
-                    st.write(html2, unsafe_allow_html=True)
+                    html3 = html2.replace('<th>', '<th align="center">')
+                    st.write(html3, unsafe_allow_html=True)
                     st.balloons()
             else:
                 st.header('下为检测后的视频')
