@@ -112,5 +112,5 @@ if __name__ == '__main__':
 
   buffer = st.file_uploader("Upload water meter reading image", type=['png', 'jpeg', 'jpg'])
   warnings.filterwarnings('ignore')
-  st.header(buffer)
+  st.title('Water meter reading system based on YOLOv5')
   predict(buffer)
