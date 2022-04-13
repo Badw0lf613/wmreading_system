@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 from models.common import *
 from models.experimental import *
 from utils.autoanchor import check_anchor_order
-from utils.general import check_yaml, make_divisible, print_args
+from utils.general import make_divisible, print_args
 from utils.plots import feature_visualization
 from utils.torch_utils import (fuse_conv_and_bn, initialize_weights, model_info, profile, scale_img, select_device,
                                time_sync)
@@ -317,7 +317,7 @@ if __name__ == '__main__':
     parser.add_argument('--line-profile', action='store_true', help='profile model speed layer by layer')
     parser.add_argument('--test', action='store_true', help='test all yolo*.yaml')
     opt = parser.parse_args()
-    opt.cfg = check_yaml(opt.cfg)  # check YAML
+    # opt.cfg = check_yaml(opt.cfg)  # check YAML
     print_args(vars(opt))
     device = select_device(opt.device)
 
