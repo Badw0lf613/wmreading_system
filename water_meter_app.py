@@ -65,7 +65,7 @@ def format_predictions(img_path, results, num_classes=8):
   # reading = reading[2:]
   try:
     reading = float(reading)
-    plt.title(str(img_path) + "\n" + "Predict labels: " + str(df['class'].values) + "\n" + 'Reading: ' +  str(reading) + " m\u00b3")
+    plt.title(str(img_path) + "\n" + str(img) + "\n" + "Predict labels: " + str(df['class'].values) + "\n" + 'Reading: ' +  str(reading) + " m\u00b3")
 #     plt.title("Predict labels: " + str(df['class'].values) + "\n" + 'Reading: ' +  str(reading) + " m\u00b3")
   except:
     plt.title('Is this a valid water meter image...?')
