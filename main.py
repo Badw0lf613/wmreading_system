@@ -111,7 +111,8 @@ if __name__ == '__main__':
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         txtpath = str(Path(f'{get_detection_folder()}') / img)
-                        txtpath_list = txtpath.split('/')[:-1]
+                        txtpath_list = txtpath.split('/')[0:-1]
+                        st.write(txtpath_list)
                         for l in txtpath_list:
                             txtpath = '' + l + '/'
                         txtpath = txtpath.replace(".jpg",".txt")
