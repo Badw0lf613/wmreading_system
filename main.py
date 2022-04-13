@@ -8,6 +8,7 @@ import sys
 import argparse
 from PIL import Image
 import pandas as pd
+import numpy as np
 
 def get_subdirs(b='.'):
     '''
