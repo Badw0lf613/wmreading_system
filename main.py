@@ -109,13 +109,12 @@ if __name__ == '__main__':
                 st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
-                        txtpath = str(Path(f'{get_detection_folder()}')).replace(".jpg", ".txt")
+                        txtpath = str(Path(f'{get_detection_folder()}') / img).replace(".jpg", ".txt")
                         with open(txtpath, "r") as f:  # 打开文件
                             data = f.read()  # 读取文件
                             print(data)
                         txt = st.text_area(data)
                         st.write('Sentiment:', run_sentiment_analysis(txt))
-                        str(Path(f'{get_detection_folder()}') / img)
                         st.image(str(Path(f'{get_detection_folder()}') / img))
                     # txt = st.text_area(str(Path(f'{get_detection_folder()}')
                     # st.write('Sentiment:', run_sentiment_analysis(txt))
