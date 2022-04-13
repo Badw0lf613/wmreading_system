@@ -116,6 +116,7 @@ if __name__ == '__main__':
                         txtpath = ''
                         for l in txtpath_list:
                             txtpath = txtpath + l + '/'
+                        txtpath = txtpath + img
                         txtpath = txtpath.replace(".jpg",".txt")
                         st.write(txtpath)
                         with open(txtpath, "r") as f:  # 打开文件
