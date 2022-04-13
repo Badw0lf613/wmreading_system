@@ -30,7 +30,7 @@ def get_detection_folder():
 
 if __name__ == '__main__':
 
-    st.title('WMreading_system based on YOLOv5')
+    st.title('WMRsystem based on YOLOv5')
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
@@ -106,12 +106,14 @@ if __name__ == '__main__':
             detect(opt)
 
             if source_index == 0:
+                st.header('下为检测后的图片')
                 with st.spinner(text='Preparing Images'):
                     for img in os.listdir(get_detection_folder()):
                         st.image(str(Path(f'{get_detection_folder()}') / img))
 
                     st.balloons()
             else:
+                st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
                     for vid in os.listdir(get_detection_folder()):
                         st.video(str(Path(f'{get_detection_folder()}') / vid))
