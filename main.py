@@ -28,8 +28,8 @@ def get_subdirs_without_labels(b='.'):
     for d in os.listdir(b):
         bd = os.path.join(b, d)
         if os.path.isdir(bd):
-            # result.append(bd)
-            break
+            st.write('bd', bd)
+            result.append(bd)
     return result
 
 def get_detection_folder():
