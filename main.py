@@ -7,7 +7,7 @@ import os
 import sys
 import argparse
 from PIL import Image
-
+import pandas as pd
 
 def get_subdirs(b='.'):
     '''
