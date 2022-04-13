@@ -137,14 +137,16 @@ if __name__ == '__main__':
                         txtpath = txtpath + l + '/'
                     # st.write(img_tmp)
                     txtpath = txtpath + 'labels/' + img_tmp
-                    txtpath = txtpath.replace(".jpg",".txt")
+                    txtpath = txtpath.replace(".jpg", ".txt")
                     # st.write(txtpath)
                     st.header('下为检测后的标签')
+                    line_list = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
-                            st.write(line[0])
+                            line_list.append(line[0])
                             print(line)
+                    st.write(line_list)
                     st.balloons()
             else:
                 st.header('下为检测后的视频')
