@@ -141,12 +141,27 @@ if __name__ == '__main__':
                     # st.write(txtpath)
                     st.header('下为检测后的标签')
                     line_list = []
+                    line_list2 = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
+                            line = line[:2].strip()
+                            if line == "10":
+                                line = "counter"
                             line_list.append(line[:2].strip())
+                            line_list2.append(line[2:].strip())
                             print(line)
                     st.write(line_list)
+                    st.write(line_list2)
+                    df = pd.DataFrame(data=np.zeros((len(line_list), 2)),
+                      columns=['Labels', 'Position'],
+                      index=np.linspace(1, len(line_list), len(line_list), dtype=int))
+                    i = 0
+                    for (l, p) in zip(line_list, line_list2):
+                        df.iloc[i,0] = l
+                        df.iloc[i,1] = p
+                        i += 1
+                    st.write(df.to_html(escape=False), unsafe_allow_html=True)
                     st.balloons()
             else:
                 st.header('下为检测后的视频')
