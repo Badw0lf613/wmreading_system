@@ -143,7 +143,7 @@ if __name__ == '__main__':
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
-                            st.write(line)
+                            st.write(line[0])
                             print(line)
                     st.balloons()
             else:
