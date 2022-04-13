@@ -105,7 +105,8 @@ def predict(inp):
 #       results = model.to(device)(temp_file.name)
 #       format_predictions(temp_file.name, results)
       weights = 'weights/best.pt'
-      detect(weights, temp_file.name)
+#       detect(weights, temp_file.name)
+      detect(weights, inp)
 
 if __name__ == '__main__':
   yolo_path = os.path.join(os.getcwd(), 'yolov5')
