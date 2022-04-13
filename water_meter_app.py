@@ -14,7 +14,7 @@ import cv2
 # import argparse
 from tempfile import NamedTemporaryFile
 import warnings
-from yolov5-master import detect
+from yolov5 import detect
 
 
 # ap = argparse.ArgumentParser()
