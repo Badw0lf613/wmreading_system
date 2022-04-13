@@ -75,8 +75,8 @@ def load_model(src, path, device, reload=False):
   return torch.hub.load(src, 'custom', path=path, device=device, force_reload=reload)
 
 @st.cache
-def detect(img):
-  os.system("python test.py -i %s -b %s" % (inputparam1, inputparam2))
+def detect(weights, source):
+  os.system("python yolov5-master/detect.py --weights %s --source %s" % (inputparam1, inputparam2))
 
 @st.cache(ttl=24*3600, suppress_st_warning=True, show_spinner=False)
 def predict(inp):
@@ -96,8 +96,10 @@ def predict(inp):
       st.header("Predict picture")
       temp_file = NamedTemporaryFile(delete=True)
       temp_file.write(inp.getvalue())
-      results = model.to(device)(temp_file.name)
-      format_predictions(temp_file.name, results)
+#       results = model.to(device)(temp_file.name)
+#       format_predictions(temp_file.name, results)
+      weights = 'weights/best.pt'
+      detect(weights, temp_file)
 
 if __name__ == '__main__':
   yolo_path = os.path.join(os.getcwd(), 'yolov5')
