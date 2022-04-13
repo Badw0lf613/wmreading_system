@@ -6,7 +6,7 @@ YOLOv5
 streamlit
 # 目前效果
 ## 演示地址
-https://share.streamlit.io/badw0lf613/wmreading_system/water_meter_app.py
+https://share.streamlit.io/badw0lf613/wmreading_system/main.py
 ## 运行结果
 ![image](https://github.com/Badw0lf613/wmreading_system/blob/master/imgs/result.png)
 # 待完成
