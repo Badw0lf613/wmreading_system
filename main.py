@@ -153,7 +153,7 @@ if __name__ == '__main__':
                                 line_list.append(line[:2].strip())
                             l2 = line[2:].strip().split()
                             # st.write('l2', l2)
-                            line_list2.append(l2[:4])
+                            line_list2.append(str(l2[:4]))
                             line_list3.append(l2[4])
                             print(line)
                     st.write('line_list', line_list)
