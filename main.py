@@ -126,9 +126,8 @@ if __name__ == '__main__':
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         img_tmp = img
                         st.write('img_tmp', img_tmp)
-                        st.image(str(Path(f'{get_detection_folder()}') / img))
-                        if img == 'labels':
-                            break
+                        if img != 'labels':
+                            st.image(str(Path(f'{get_detection_folder()}') / img))
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / img)
                     txtpath_list = txtpath.split('/')[0:-1]
