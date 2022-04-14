@@ -125,7 +125,7 @@ if __name__ == '__main__':
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         img_tmp = img
-                        # st.write('img_tmp', img_tmp)
+                        st.write('img_tmp', img_tmp)
                         st.image(str(Path(f'{get_detection_folder()}') / img))
                         if img == 'labels':
                             break
