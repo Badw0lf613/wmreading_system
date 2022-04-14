@@ -156,11 +156,11 @@ if __name__ == '__main__':
                             line_list2.append(l2[:4])
                             line_list3.append(l2[4])
                             print(line)
-                    # st.write('line_list', line_list)
-                    # st.write('line_list2', line_list2)
-                    # st.write('line_list3', line_list3)
+                    st.write('line_list', line_list)
+                    st.write('line_list2', line_list2)
+                    st.write('line_list3', line_list3)
                     df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
-                      columns=['Labels', 'Position', 'Confidenc'],
+                      columns=['Labels', 'Position', 'Confidence'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
                     i = 0
                     for (l, p, c) in zip(line_list, line_list2, line_list3):
