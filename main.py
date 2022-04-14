@@ -142,6 +142,7 @@ if __name__ == '__main__':
                     st.header('下为检测后的标签')
                     line_list = []
                     line_list2 = []
+                    line_list3 = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
