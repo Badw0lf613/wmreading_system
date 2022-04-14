@@ -153,17 +153,20 @@ if __name__ == '__main__':
                                 line_list.append(line[:2].strip())
                             l2 = line[2:].strip().split()
                             st.write('l2', l2)
-                            line_list2.append(line[2:].strip())
+                            line_list2.append(l2[:4])
+                            line_list3.append(l2[4])
                             print(line)
                     st.write('line_list', line_list)
                     st.write('line_list2', line_list2)
+                    st.write('line_list3', line_list3)
                     df = pd.DataFrame(data=np.zeros((len(line_list), 2)),
-                      columns=['Labels', 'Position'],
+                      columns=['Labels', 'Position', 'Confidenc'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
                     i = 0
-                    for (l, p) in zip(line_list, line_list2):
+                    for (l, p, c) in zip(line_list, line_list2):
                         df.iloc[i,0] = l
                         df.iloc[i,1] = p
+                        df.iloc[i,2] = c
                         i += 1
                     html = df.to_html(escape=False)
                     html2 = html.replace('<tr>', '<tr align="center">')
