@@ -120,22 +120,22 @@ if __name__ == '__main__':
             if source_index == 0:
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
-                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     st.header('下为检测后的图片')
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
                         if img != 'labels':
                             img_tmp = img
-                            st.write('img_tmp', img_tmp)
+                            # st.write('img_tmp', img_tmp)
                             st.image(str(Path(f'{get_detection_folder()}') / img))
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / img)
                     txtpath_list = txtpath.split('/')[0:-1]
-                    st.write('txtpath_list',txtpath_list)
+                    # st.write('txtpath_list',txtpath_list)
                     txtpath = ''
                     for l in txtpath_list:
                         txtpath = txtpath + l + '/'
-                    st.write('img_tmp',img_tmp)
+                    # st.write('img_tmp',img_tmp)
                     txtpath = txtpath + 'labels/' + img_tmp
                     txtpath = txtpath.replace(".jpg", ".txt")
                     # st.write(txtpath)
