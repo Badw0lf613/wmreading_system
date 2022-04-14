@@ -145,21 +145,21 @@ if __name__ == '__main__':
                     line_list3 = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
-                            st.write('line', line)
+                            # st.write('line', line)
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
                             if line[:2].strip() == "10":
                                 line_list.append("counter")
                             else:
                                 line_list.append(line[:2].strip())
                             l2 = line[2:].strip().split()
-                            st.write('l2', l2)
+                            # st.write('l2', l2)
                             line_list2.append(l2[:4])
                             line_list3.append(l2[4])
                             print(line)
-                    st.write('line_list', line_list)
-                    st.write('line_list2', line_list2)
-                    st.write('line_list3', line_list3)
-                    df = pd.DataFrame(data=np.zeros((len(line_list), 2)),
+                    # st.write('line_list', line_list)
+                    # st.write('line_list2', line_list2)
+                    # st.write('line_list3', line_list3)
+                    df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
                       columns=['Labels', 'Position', 'Confidenc'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
                     i = 0
