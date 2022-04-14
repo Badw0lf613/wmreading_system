@@ -163,7 +163,7 @@ if __name__ == '__main__':
                       columns=['Labels', 'Position', 'Confidenc'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
                     i = 0
-                    for (l, p, c) in zip(line_list, line_list1, line_list2):
+                    for (l, p, c) in zip(line_list, line_list2, line_list3):
                         df.iloc[i,0] = l
                         df.iloc[i,1] = p
                         df.iloc[i,2] = c
