@@ -145,11 +145,13 @@ if __name__ == '__main__':
                     line_list3 = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
+                            st.write('line', line)
                             line = line.strip('\n')  #去掉列表中每一个元素的换行符
                             if line[:2].strip() == "10":
                                 line_list.append("counter")
                             else:
                                 line_list.append(line[:2].strip())
+                            
                             line_list2.append(line[2:].strip())
                             print(line)
                     st.write('line_list', line_list)
