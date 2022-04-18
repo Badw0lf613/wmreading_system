@@ -161,7 +161,9 @@ if __name__ == '__main__':
                     # st.write('line_list', line_list)
                     # st.write('line_list2', line_list2)
                     # st.write('line_list3', line_list3)
-                    st.write('line_list4', line_list4)
+                    st.write(f'{s}推理及非极大值抑制耗时：{line_list4[0]:.3f}s')
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
                     df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
                       columns=['Labels', 'Position', 'Confidence'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))
