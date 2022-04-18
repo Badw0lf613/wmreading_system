@@ -118,7 +118,7 @@ def detect(opt, save_img=False):
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)
                                           ) / gn).view(-1).tolist()  # normalized xywh
                         # label中加入推理时间
-                        infer_time = f'{s}{t2 - t1:.3f}s'
+                        infer_time = t2 - t1
                         # label format
                         line = (
                             # cls, *xywh, conf) if opt.save_conf else (cls, *xywh)
