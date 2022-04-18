@@ -155,10 +155,12 @@ if __name__ == '__main__':
                             # st.write('l2', l2)
                             line_list2.append(str(l2[:4]))
                             line_list3.append(l2[4])
+                            line_list4.append(l2[5])
                             print(line)
                     # st.write('line_list', line_list)
                     # st.write('line_list2', line_list2)
                     # st.write('line_list3', line_list3)
+                    st.write('line_list4', line_list4)
                     df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
                       columns=['Labels', 'Position', 'Confidence'],
                       index=np.linspace(1, len(line_list), len(line_list), dtype=int))

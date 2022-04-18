@@ -117,10 +117,12 @@ def detect(opt, save_img=False):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)
                                           ) / gn).view(-1).tolist()  # normalized xywh
+                        # label中加入推理时间
+                        infer_time = f'{s}{t2 - t1:.3f}s'
                         # label format
                         line = (
                             # cls, *xywh, conf) if opt.save_conf else (cls, *xywh)
-                            cls, *xywh, conf) if True else (cls, *xywh)
+                            cls, *xywh, conf, infer_time) if True else (cls, *xywh)
                         with open(txt_path + '.txt', 'a') as f:
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
