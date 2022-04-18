@@ -143,6 +143,7 @@ if __name__ == '__main__':
                     line_list = []
                     line_list2 = []
                     line_list3 = []
+                    line_list4 = []
                     with open(txtpath, "r") as f:  # 打开文件
                         for line in f.readlines():
                             # st.write('line', line)
