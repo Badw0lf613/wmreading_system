@@ -132,7 +132,7 @@ def detect(opt, save_img=False):
                                      color=colors[int(cls)], line_thickness=3)
 
             # Print time (inference + NMS)
-            print(f'{s}time (inference + NMS) Done. ({t2 - t1:.3f}s)')
+            print(f'{s}time inference + NMS Done. ({t2 - t1:.3f}s)')
 
             # Stream results
             if view_img:
