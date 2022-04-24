@@ -114,7 +114,9 @@ if __name__ == '__main__':
                 opt.source = f'data/images/{uploaded_file.name}'
         else:
             is_valid = False
+    # 视频检测
     else:
+        opt.weights = 'weights/bestexp7.pt'
         uploaded_file = st.sidebar.file_uploader("上传视频", type=['mp4'])
         if uploaded_file is not None:
             is_valid = True
