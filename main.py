@@ -264,6 +264,8 @@ if __name__ == '__main__':
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
                     for vid in os.listdir(get_detection_folder()):
+                        vid_tmp = vid
+                        st.write('vid_tmp', vid_tmp)
                         st.video(str(Path(f'{get_detection_folder()}') / vid))
 
                     st.balloons()
