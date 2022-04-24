@@ -116,7 +116,8 @@ if __name__ == '__main__':
             is_valid = False
     # 视频检测
     else:
-        opt.weights = 'weights/bestexp7.pt'
+        # opt.weights = 'weights/bestexp7.pt'
+        opt.weights = 'weights/yolov5s.pt'
         uploaded_file = st.sidebar.file_uploader("上传视频", type=['mp4'])
         if uploaded_file is not None:
             is_valid = True
@@ -264,8 +265,9 @@ if __name__ == '__main__':
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
                     for vid in os.listdir(get_detection_folder()):
-                        vid_tmp = vid
-                        st.write('vid_tmp', vid_tmp)
-                        st.video(str(Path(f'{get_detection_folder()}') / vid))
+                        if vid != 'labels':
+                            vid_tmp = vid
+                            st.write('vid_tmp', vid_tmp)
+                            st.video(str(Path(f'{get_detection_folder()}') / vid))
 
                     st.balloons()
