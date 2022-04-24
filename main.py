@@ -268,6 +268,6 @@ if __name__ == '__main__':
                         if vid != 'labels':
                             vid_tmp = vid
                             st.write('vid_tmp', vid_tmp)
-                            st.video(str(Path(f'{get_detection_folder()}') / vid))
+                            st.video(str(Path(f'{get_detection_folder()}') / vid_tmp))
 
                     st.balloons()
