@@ -83,11 +83,26 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     print(opt)
 
-    source = ("图片检测", "视频检测")
+    source = ("仪表识别", "行为检测", "视频检测")
     source_index = st.sidebar.selectbox("选择输入", range(
         len(source)), format_func=lambda x: source[x])
 
+    # 仪表识别
     if source_index == 0:
+        uploaded_file = st.sidebar.file_uploader(
+            "上传图片", type=['png', 'jpeg', 'jpg'])
+        if uploaded_file is not None:
+            is_valid = True
+            with st.spinner(text='资源加载中...'):
+                st.sidebar.image(uploaded_file)
+                picture = Image.open(uploaded_file)
+                picture = picture.save(f'data/images/{uploaded_file.name}')
+                opt.source = f'data/images/{uploaded_file.name}'
+        else:
+            is_valid = False
+    # 行为检测
+    elif source_index == 1:
+        opt.weights = 'weights/best_ped.pt'
         uploaded_file = st.sidebar.file_uploader(
             "上传图片", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
@@ -118,6 +133,67 @@ if __name__ == '__main__':
             detect(opt)
 
             if source_index == 0:
+                with st.spinner(text='Preparing Images'):
+                    img_tmp = ''
+                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    st.header('下为检测后的图片')
+                    for img in os.listdir(get_detection_folder()):
+                        # txtpath = str(Path(f'{get_detection_folder()}').split('/')
+                        if img != 'labels':
+                            img_tmp = img
+                            # st.write('img_tmp', img_tmp)
+                            st.image(str(Path(f'{get_detection_folder()}') / img))
+                    # 对图片路径做处理得到txt路径
+                    txtpath = str(Path(f'{get_detection_folder()}') / img)
+                    txtpath_list = txtpath.split('/')[0:-1]
+                    # st.write('txtpath_list',txtpath_list)
+                    txtpath = ''
+                    for l in txtpath_list:
+                        txtpath = txtpath + l + '/'
+                    # st.write('img_tmp',img_tmp)
+                    txtpath = txtpath + 'labels/' + img_tmp
+                    txtpath = txtpath.replace(".jpg", ".txt")
+                    # st.write(txtpath)
+                    st.header('下为检测后的标签')
+                    line_list = []
+                    line_list2 = []
+                    line_list3 = []
+                    line_list4 = []
+                    with open(txtpath, "r") as f:  # 打开文件
+                        for line in f.readlines():
+                            # st.write('line', line)
+                            line = line.strip('\n')  #去掉列表中每一个元素的换行符
+                            if line[:2].strip() == "10":
+                                line_list.append("counter")
+                            else:
+                                line_list.append(line[:2].strip())
+                            l2 = line[2:].strip().split()
+                            # st.write('l2', l2)
+                            line_list2.append(str(l2[:4]))
+                            line_list3.append(l2[4])
+                            line_list4.append(l2[5])
+                            print(line)
+                    # st.write('line_list', line_list)
+                    # st.write('line_list2', line_list2)
+                    # st.write('line_list3', line_list3)
+                    st.write('推理及非极大值抑制耗时：' + line_list4[0] + 's')
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
+                    df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
+                      columns=['Labels', 'Position', 'Confidence'],
+                      index=np.linspace(1, len(line_list), len(line_list), dtype=int))
+                    i = 0
+                    for (l, p, c) in zip(line_list, line_list2, line_list3):
+                        df.iloc[i,0] = l
+                        df.iloc[i,1] = p
+                        df.iloc[i,2] = c
+                        i += 1
+                    html = df.to_html(escape=False)
+                    html2 = html.replace('<tr>', '<tr align="center">')
+                    html3 = html2.replace('<th>', '<th align="center">')
+                    st.write(html3, unsafe_allow_html=True)
+                    st.balloons()
+            elif source_index == 1:
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
                     # st.write('get_detection_folder', os.listdir(get_detection_folder()))
