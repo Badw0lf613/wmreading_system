@@ -102,7 +102,7 @@ if __name__ == '__main__':
             is_valid = False
     # 行为检测
     elif source_index == 1:
-        opt.weights = 'weights/bestped.pt'
+        opt.weights = 'weights/bestexp7.pt'
         uploaded_file = st.sidebar.file_uploader(
             "上传图片", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
