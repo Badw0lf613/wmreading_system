@@ -159,7 +159,7 @@ def detect(opt, save_img=False):
                             # save_path += '.mp4'
                             save_path = str(Path(save_path).with_suffix('.mp4'))  # force *.mp4 suffix on results videos
                         print('!!!vid save_path', save_path)
-                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'H264'), fps, (w, h))
                         # vid_writer = cv2.VideoWriter(
                         #     # save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         #     # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
