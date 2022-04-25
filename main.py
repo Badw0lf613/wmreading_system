@@ -199,7 +199,7 @@ if __name__ == '__main__':
             elif source_index == 1:
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
-                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     st.header('下为检测后的图片')
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
@@ -264,9 +264,9 @@ if __name__ == '__main__':
             else:
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
-                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     video_path = f'data/result/{uploaded_file.name}'
-                    st.write('video_path', video_path)
+                    # st.write('video_path', video_path)
                     st.video(video_path)
                     for vid in os.listdir(get_detection_folder()):
                         pass
@@ -279,7 +279,7 @@ if __name__ == '__main__':
                         txtpath = txtpath + l + '/'
                     txtpath = txtpath + 'labels/' + uploaded_file.name
                     txtpath = txtpath.replace(".mp4", "_1.txt")
-                    st.write(txtpath)
+                    # st.write(txtpath)
                     st.header('下为检测后的标签')
                     line_list = []
                     line_list2 = []
