@@ -272,6 +272,7 @@ if __name__ == '__main__':
                             st.write('vid_tmp', vid_tmp)
                             st.write(str(Path(f'{get_detection_folder()}') / vid_tmp))
                             video_path = f'data/result/{uploaded_file.name}'
+                            st.write('video_path', video_path)
                             st.video(video_path)
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / vid)
