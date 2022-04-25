@@ -157,10 +157,12 @@ def detect(opt, save_img=False):
                         else:  # stream
                             fps, w, h = 30, im0.shape[1], im0.shape[0]
                             save_path += '.mp4'
-                        vid_writer = cv2.VideoWriter(
-                            # save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
-                            # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
-                            save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
+                        print('!!!vid save_path', save_path)
+                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                        # vid_writer = cv2.VideoWriter(
+                        #     # save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                        #     # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
+                        #     save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
                     vid_writer.write(im0)
 
     if save_txt or save_img:
