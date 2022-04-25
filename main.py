@@ -9,6 +9,7 @@ import argparse
 from PIL import Image
 import pandas as pd
 import numpy as np
+from detect_yolov5 import run
 
 def get_subdirs(b='.'):
     '''
@@ -270,6 +271,7 @@ if __name__ == '__main__':
                         if vid != 'labels':
                             vid_tmp = vid
                             st.write('vid_tmp', vid_tmp)
+                            st.write(str(Path(f'{get_detection_folder()}') / vid_tmp))
                             st.video(str(Path(f'{get_detection_folder()}') / vid_tmp))
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / vid)
