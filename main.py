@@ -9,7 +9,6 @@ import argparse
 from PIL import Image
 import pandas as pd
 import numpy as np
-from detect_yolov5 import run
 
 def get_subdirs(b='.'):
     '''
