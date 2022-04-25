@@ -264,10 +264,22 @@ if __name__ == '__main__':
             else:
                 st.header('下为检测后的视频')
                 with st.spinner(text='Preparing Video'):
+                    vid_tmp = ''
+                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     for vid in os.listdir(get_detection_folder()):
                         if vid != 'labels':
                             vid_tmp = vid
                             st.write('vid_tmp', vid_tmp)
                             st.video(str(Path(f'{get_detection_folder()}') / vid_tmp))
-
+                    # 对图片路径做处理得到txt路径
+                    txtpath = str(Path(f'{get_detection_folder()}') / vid)
+                    txtpath_list = txtpath.split('/')[0:-1]
+                    st.write('txtpath_list',txtpath_list)
+                    txtpath = ''
+                    for l in txtpath_list:
+                        txtpath = txtpath + l + '/'
+                    st.write('vid_tmp',vid_tmp)
+                    txtpath = txtpath + 'labels/' + vid_tmp
+                    txtpath = txtpath.replace(".mp4", ".txt")
+                    st.write(txtpath)
                     st.balloons()
