@@ -199,7 +199,7 @@ if __name__ == '__main__':
             elif source_index == 1:
                 with st.spinner(text='Preparing Images'):
                     img_tmp = ''
-                    # st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    st.write('get_detection_folder', os.listdir(get_detection_folder()))
                     st.header('下为检测后的图片')
                     for img in os.listdir(get_detection_folder()):
                         # txtpath = str(Path(f'{get_detection_folder()}').split('/')
