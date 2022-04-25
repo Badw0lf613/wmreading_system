@@ -159,14 +159,14 @@ def detect(opt, save_img=False):
                             # save_path += '.mp4'
                             save_path = str(Path(save_path).with_suffix('.mp4'))  # force *.mp4 suffix on results videos
                         print('!!!vid save_path', save_path)
-                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
+                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         # vid_writer = cv2.VideoWriter(
                         #     # save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         #     # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
                         #     save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
-                    print('vid_writer', vid_writer)
+                    # print('vid_writer', vid_writer)
                     vid_writer.write(im0)
-                    print('vid_writer done')
+                    # print('vid_writer done')
 
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
