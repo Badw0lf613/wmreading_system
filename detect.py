@@ -122,7 +122,7 @@ def detect(opt, save_img=False):
                         # label format
                         line = (
                             # cls, *xywh, conf) if opt.save_conf else (cls, *xywh)
-                            cls, *xywh, conf, infer_time) if False else (cls, *xywh)
+                            cls, *xywh, conf, infer_time) if True else (cls, *xywh)
                         with open(txt_path + '.txt', 'a') as f:
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
