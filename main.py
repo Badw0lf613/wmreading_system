@@ -266,14 +266,11 @@ if __name__ == '__main__':
                 with st.spinner(text='Preparing Video'):
                     vid_tmp = ''
                     st.write('get_detection_folder', os.listdir(get_detection_folder()))
+                    video_path = f'data/result/{uploaded_file.name}'
+                    st.write('video_path', video_path)
+                    st.video(video_path)
                     for vid in os.listdir(get_detection_folder()):
-                        if vid != 'labels':
-                            vid_tmp = vid
-                            st.write('vid_tmp', vid_tmp)
-                            st.write(str(Path(f'{get_detection_folder()}') / vid_tmp))
-                            video_path = f'data/result/{uploaded_file.name}'
-                            st.write('video_path', video_path)
-                            st.video(video_path)
+                        pass
                     # 对图片路径做处理得到txt路径
                     txtpath = str(Path(f'{get_detection_folder()}') / vid)
                     txtpath_list = txtpath.split('/')[0:-1]
