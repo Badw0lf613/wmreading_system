@@ -164,9 +164,9 @@ def detect(opt, save_img=False):
                         #     # save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                         #     # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
                         #     save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
-                    st.write('vid_writer', vid_writer)
+                    print('vid_writer', vid_writer)
                     vid_writer.write(im0)
-                    st.write('vid_writer done')
+                    print('vid_writer done')
 
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
