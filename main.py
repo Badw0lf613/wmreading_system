@@ -283,4 +283,47 @@ if __name__ == '__main__':
                     txtpath = txtpath + 'labels/' + vid_tmp
                     txtpath = txtpath.replace(".mp4", ".txt")
                     st.write(txtpath)
+                    st.header('下为检测后的标签')
+                    line_list = []
+                    line_list2 = []
+                    line_list3 = []
+                    line_list4 = []
+                    with open(txtpath, "r") as f:  # 打开文件
+                        for line in f.readlines():
+                            # st.write('line', line)
+                            line = line.strip('\n')  #去掉列表中每一个元素的换行符
+                            if line[:2].strip() == "10":
+                                line_list.append("counter")
+                            else:
+                                line_list.append(line[:2].strip())
+                            l2 = line[2:].strip().split()
+                            # st.write('l2', l2)
+                            line_list2.append(str(l2[:4]))
+                            line_list3.append(l2[4])
+                            line_list4.append(l2[5])
+                            print(line)
+                    # st.write('line_list', line_list)
+                    # st.write('line_list2', line_list2)
+                    # st.write('line_list3', line_list3)
+                    st.write('推理及非极大值抑制耗时：' + line_list4[0] + 's')
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
+                    # st.write('推理及非极大值抑制耗时：', line_list4[0])
+                    df = pd.DataFrame(data=np.zeros((len(line_list), 3)),
+                      columns=['Labels', 'Position', 'Confidence'],
+                      index=np.linspace(1, len(line_list), len(line_list), dtype=int))
+                    i = 0
+                    for (l, p, c) in zip(line_list, line_list2, line_list3):
+                        if l == '0':
+                            l = 'person'
+                        elif l == '1':
+                            l = 'crosswalk'
+                        df.iloc[i,0] = l
+                        df.iloc[i,1] = p
+                        df.iloc[i,2] = c
+                        i += 1
+                    html = df.to_html(escape=False)
+                    html2 = html.replace('<tr>', '<tr align="center">')
+                    html3 = html2.replace('<th>', '<th align="center">')
+                    st.write(html3, unsafe_allow_html=True)
+                    st.balloons()
                     st.balloons()
