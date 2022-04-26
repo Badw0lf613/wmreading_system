@@ -13,7 +13,7 @@ from utils.general import check_img_size, check_requirements, check_imshow, non_
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
 from utils.plots import plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_synchronized
-
+from calculate_IoU import bb_intersection_over_union
 
 def detect(opt, save_img=False):
     # source, weights, view_img, save_txt, imgsz = opt.source, opt.weights, opt.view_img, opt.save_txt, opt.img_size
@@ -113,6 +113,8 @@ def detect(opt, save_img=False):
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "
 
                 # Write results
+                plist = []
+                clist = []
                 for *xyxy, conf, cls in reversed(det):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)
@@ -130,8 +132,26 @@ def detect(opt, save_img=False):
                         # !!!change labels format
                         # label = f'{names[int(cls)]} {conf:.2f}'
                         label = f'{names[int(cls)][:1]}'
+                        # print('!!!label', label)
+                        # print('!!!xyxy', xyxy)
                         plot_one_box(xyxy, im0, label=label,
                                      color=colors[int(cls)], line_thickness=3)
+                        # points = [int(xyxy[0]), int(xyxy[1]), int(xyxy[2]), int(xyxy[3])]
+                        points = [xyxy[0], xyxy[1], xyxy[2], xyxy[3]]
+                        # print('!!!points', points)
+                        if label == 'c':
+                            clist.append(points)
+                        elif label == 'p':
+                            plist.append(points)
+                # print('!!!clist', clist)
+                # print('!!!plist', plist)
+                for p in plist:
+                    iou = bb_intersection_over_union(clist[0], p)
+                    print('iou', iou)
+                    if iou > 0:
+                        # print('!!!p', p)
+                        plot_one_box(p, im0, label='crossing',
+                                     color=[0, 0, 255], line_thickness=3)
 
             # Print time (inference + NMS)
             print(f'{s}time inference + NMS Done. ({t2 - t1:.3f}s)')
