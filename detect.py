@@ -143,13 +143,13 @@ def detect(opt, save_img=False):
                             clist.append(points)
                         elif label == 'p':
                             plist.append(points)
-                # print('!!!clist', clist)
-                # print('!!!plist', plist)
+                print('!!!clist', clist)
+                print('!!!plist', plist)
                 for p in plist:
                     iou = bb_intersection_over_union(clist[0], p)
                     print('iou', iou)
                     if iou > 0:
-                        # print('!!!p', p)
+                        print('!!!p', p)
                         plot_one_box(p, im0, label='crossing',
                                      color=[0, 0, 255], line_thickness=3)
 
@@ -185,7 +185,7 @@ def detect(opt, save_img=False):
                         #     # 参考 https://xugaoxiang.com/2021/08/20/opencv-h264-videowrite
                         #     save_path, cv2.VideoWriter_fourcc(*'avc1'), fps, (w, h))
                     # print('vid_writer', vid_writer)
-                    # vid_writer.write(im0)
+                    vid_writer.write(im0)
                     # print('vid_writer done')
 
     if save_txt or save_img:
