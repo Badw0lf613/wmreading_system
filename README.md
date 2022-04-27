@@ -7,6 +7,7 @@ streamlit
 # 目前效果
 
 ## 演示视频
+demo.mp4
 <video src="https://github.com/Badw0lf613/wmreading_system/blob/master/demo.mp4"></video>
 
 ## 演示地址
