@@ -5,6 +5,10 @@ YOLOv5
 # 平台搭建
 streamlit
 # 目前效果
+
+## 演示视频
+![video](https://github.com/Badw0lf613/wmreading_system/blob/master/demo.mp4)
+
 ## 演示地址
 https://share.streamlit.io/badw0lf613/wmreading_system/main.py
 ## 运行结果
