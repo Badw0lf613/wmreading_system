@@ -7,7 +7,7 @@ streamlit
 # 目前效果
 
 ## 演示视频
-<video src="[demo.mp4](https://github.com/Badw0lf613/wmreading_system/blob/master/demo.mp4)"></video>
+<video src="https://github.com/Badw0lf613/wmreading_system/blob/master/demo.mp4"></video>
 
 ## 演示地址
 https://share.streamlit.io/badw0lf613/wmreading_system/main.py
