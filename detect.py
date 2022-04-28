@@ -164,10 +164,10 @@ def detect(opt, save_img=False):
                     # iou = bb_intersection_over_union(clist[0], p)
                     line_crosswalk = [228,194,1032,194,1032,262,5,238] # crosswalk
                     line_driveway  = [813,0,1065,0,1032,194,228,194]   # driveway
-                    # 只看bbox最下端即脚部分
                     line2 = [int(p[0]),int(p[1]),int(p[2]),int(p[1]),
                              int(p[0]),int(p[3]),int(p[2]),int(p[3])]
                     p1 = p[1]
+                    # 只看bbox最下端即脚部分p_feet
                     p_feet = p
                     p_feet[1] = p_feet[3] - 20
                     line2_feet = [int(p_feet[0]),int(p_feet[1]),int(p_feet[2]),int(p_feet[1]),
@@ -186,7 +186,8 @@ def detect(opt, save_img=False):
                                      color=[0, 0, 0], line_thickness=3)
                         p[1] = p1
                         print('!!!after p', p)
-                        if iou_crosswalk_feet > 0:
+                        if iou_crosswalk_feet > 0 and iou_driveway_feet == 0:
+                            # 只有在与crosswalk有交集和driveway无交集才绘制
                             plot_one_box(p, im0, label='crossing',
                                          color=[0, 0, 255], line_thickness=3)
                     if iou_driveway > 0:
