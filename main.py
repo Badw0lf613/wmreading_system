@@ -42,7 +42,7 @@ def get_detection_folder():
 
 if __name__ == '__main__':
 
-    st.title('WMRsystem based on YOLOv5')
+    st.title('仪表识别和异常行为检测系统')
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
