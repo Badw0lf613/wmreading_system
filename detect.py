@@ -137,7 +137,7 @@ def detect(opt, save_img=False):
                         label = f'{names[int(cls)][:1]}'
                         # print('!!!label', label)
                         # print('!!!xyxy', xyxy)
-                        if label != 'c':
+                        if label != 'c' and opt.weights == 'weights/bestexp7.pt':
                             # 不画斑马线
                             plot_one_box(xyxy, im0, label=label,
                                         color=colors[int(cls)], line_thickness=3)
@@ -154,13 +154,15 @@ def detect(opt, save_img=False):
                 # crosswalk [225,194,1032,194,1032,262,5,238]
                 # driveway  (813,0) (1065,0) (1032,194) (225,194)
                 # driveway  [813,0,1065,0,1032,194,225,194]
-                points_crosswalk = np.array([[228,194],[1032,194],[1032,262],[5,238]], np.int32)
-                points_crosswalk = points_crosswalk.reshape((-1,1,2))
-                plot_polylines(points_crosswalk, im0, label='crosswalk', color=[255, 0, 0], line_thickness=3)
-                points_driveway = np.array([[813,0],[1065,0],[1032,194],[228,194]], np.int32)
-                points_driveway = points_driveway.reshape((-1,1,2))
-                plot_polylines(points_driveway, im0, label='driveway', color=[0, 255, 0], line_thickness=3)
-                for p in plist:
+                # 确保仪表识别时不绘制斑马线区域和车道区域
+                if opt.weights == 'weights/bestexp7.pt':
+                    points_crosswalk = np.array([[228,194],[1032,194],[1032,262],[5,238]], np.int32)
+                    points_crosswalk = points_crosswalk.reshape((-1,1,2))
+                    plot_polylines(points_crosswalk, im0, label='crosswalk', color=[255, 0, 0], line_thickness=3)
+                    points_driveway = np.array([[813,0],[1065,0],[1032,194],[228,194]], np.int32)
+                    points_driveway = points_driveway.reshape((-1,1,2))
+                    plot_polylines(points_driveway, im0, label='driveway', color=[0, 255, 0], line_thickness=3)
+                    for p in plist:
                     # iou = bb_intersection_over_union(clist[0], p)
                     line_crosswalk = [228,194,1032,194,1032,262,5,238] # crosswalk
                     line_driveway  = [813,0,1065,0,1032,194,228,194]   # driveway
