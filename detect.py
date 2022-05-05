@@ -163,45 +163,45 @@ def detect(opt, save_img=False):
                     points_driveway = points_driveway.reshape((-1,1,2))
                     plot_polylines(points_driveway, im0, label='driveway', color=[0, 255, 0], line_thickness=3)
                     for p in plist:
-                    # iou = bb_intersection_over_union(clist[0], p)
-                    line_crosswalk = [228,194,1032,194,1032,262,5,238] # crosswalk
-                    line_driveway  = [813,0,1065,0,1032,194,228,194]   # driveway
-                    line2 = [int(p[0]),int(p[1]),int(p[2]),int(p[1]),
-                             int(p[0]),int(p[3]),int(p[2]),int(p[3])]
-                    p1 = p[1]
-                    # 只看bbox最下端即脚部分p_feet
-                    p_feet = p
-                    p_feet[1] = p_feet[3] - 20
-                    line2_feet = [int(p_feet[0]),int(p_feet[1]),int(p_feet[2]),int(p_feet[1]),
-                             int(p_feet[0]),int(p_feet[3]),int(p_feet[2]),int(p_feet[3])]
-                    iou_crosswalk = polygon_intersection_over_union(line_crosswalk, line2)
-                    iou_crosswalk_feet = polygon_intersection_over_union(line_crosswalk, line2_feet)
-                    iou_driveway = polygon_intersection_over_union(line_driveway, line2)
-                    iou_driveway_feet = polygon_intersection_over_union(line_driveway, line2_feet)
-                    print('iou_crosswalk', iou_crosswalk)
-                    print('iou_crosswalk_feet', iou_crosswalk_feet)
-                    print('iou_driveway', iou_driveway)
-                    print('iou_driveway_feet', iou_driveway_feet)
-                    if iou_crosswalk > 0:
-                        print('!!!p', p)
-                        plot_one_box(p_feet, im0, label='feet',
-                                     color=[0, 0, 0], line_thickness=3)
-                        p[1] = p1
-                        print('!!!after p', p)
-                        if iou_crosswalk_feet > 0 and iou_driveway_feet == 0:
-                            # 只有在与crosswalk有交集和driveway无交集才绘制
-                            plot_one_box(p, im0, label='crossing',
-                                         color=[0, 0, 255], line_thickness=3)
-                    if iou_driveway > 0:
-                        print('!!!p', p)
+                        # iou = bb_intersection_over_union(clist[0], p)
+                        line_crosswalk = [228,194,1032,194,1032,262,5,238] # crosswalk
+                        line_driveway  = [813,0,1065,0,1032,194,228,194]   # driveway
+                        line2 = [int(p[0]),int(p[1]),int(p[2]),int(p[1]),
+                                int(p[0]),int(p[3]),int(p[2]),int(p[3])]
+                        p1 = p[1]
+                        # 只看bbox最下端即脚部分p_feet
+                        p_feet = p
                         p_feet[1] = p_feet[3] - 20
-                        plot_one_box(p_feet, im0, label='feet',
-                                     color=[0, 0, 0], line_thickness=3)
-                        p[1] = p1
-                        print('!!!after p', p)
-                        if iou_driveway_feet > 0:
-                            plot_one_box(p, im0, label='warning',
-                                         color=[255, 0, 255], line_thickness=3)
+                        line2_feet = [int(p_feet[0]),int(p_feet[1]),int(p_feet[2]),int(p_feet[1]),
+                                int(p_feet[0]),int(p_feet[3]),int(p_feet[2]),int(p_feet[3])]
+                        iou_crosswalk = polygon_intersection_over_union(line_crosswalk, line2)
+                        iou_crosswalk_feet = polygon_intersection_over_union(line_crosswalk, line2_feet)
+                        iou_driveway = polygon_intersection_over_union(line_driveway, line2)
+                        iou_driveway_feet = polygon_intersection_over_union(line_driveway, line2_feet)
+                        print('iou_crosswalk', iou_crosswalk)
+                        print('iou_crosswalk_feet', iou_crosswalk_feet)
+                        print('iou_driveway', iou_driveway)
+                        print('iou_driveway_feet', iou_driveway_feet)
+                        if iou_crosswalk > 0:
+                            print('!!!p', p)
+                            plot_one_box(p_feet, im0, label='feet',
+                                        color=[0, 0, 0], line_thickness=3)
+                            p[1] = p1
+                            print('!!!after p', p)
+                            if iou_crosswalk_feet > 0 and iou_driveway_feet == 0:
+                                # 只有在与crosswalk有交集和driveway无交集才绘制
+                                plot_one_box(p, im0, label='crossing',
+                                            color=[0, 0, 255], line_thickness=3)
+                        if iou_driveway > 0:
+                            print('!!!p', p)
+                            p_feet[1] = p_feet[3] - 20
+                            plot_one_box(p_feet, im0, label='feet',
+                                        color=[0, 0, 0], line_thickness=3)
+                            p[1] = p1
+                            print('!!!after p', p)
+                            if iou_driveway_feet > 0:
+                                plot_one_box(p, im0, label='warning',
+                                            color=[255, 0, 255], line_thickness=3)
 
             # Print time (inference + NMS)
             print(f'{s}time inference + NMS Done. ({t2 - t1:.3f}s)')
