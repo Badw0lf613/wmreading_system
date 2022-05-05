@@ -137,7 +137,11 @@ def detect(opt, save_img=False):
                         label = f'{names[int(cls)][:1]}'
                         # print('!!!label', label)
                         # print('!!!xyxy', xyxy)
-                        if label != 'c' and opt.weights == 'weights/bestexp7.pt':
+                        if label != 'c':
+                            # 不画斑马线
+                            plot_one_box(xyxy, im0, label=label,
+                                        color=colors[int(cls)], line_thickness=3)
+                        if label == 'c' and opt.weights == 'weights/best.pt':
                             # 不画斑马线
                             plot_one_box(xyxy, im0, label=label,
                                         color=colors[int(cls)], line_thickness=3)
