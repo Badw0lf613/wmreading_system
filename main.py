@@ -84,8 +84,20 @@ if __name__ == '__main__':
     print(opt)
 
     source = ("仪表识别", "行为检测", "视频检测")
-    source_index = st.sidebar.selectbox("选择输入", range(
+    source_index = st.sidebar.selectbox("检测类型", range(
         len(source)), format_func=lambda x: source[x])
+
+    source_weights = ("best.pt", "bestexp7.pt", "yolov5s.pt")
+    source_index_weights = st.sidebar.selectbox("选择模型", range(
+        len(source_weights)), format_func=lambda x: source_weights[x])
+
+    # 根据选择模型的下标来切换权重文件
+    if source_index_weights == 0:
+        opt.weights = 'weights/best.pt'
+    elif source_index_weights == 1:
+        opt.weights = 'weights/bestexp7.pt'
+    else:
+        opt.weights = 'weights/bestexp7.pt'
 
     # 仪表识别
     if source_index == 0:
@@ -102,7 +114,7 @@ if __name__ == '__main__':
             is_valid = False
     # 行为检测
     elif source_index == 1:
-        opt.weights = 'weights/bestexp7.pt'
+        # opt.weights = 'weights/bestexp7.pt'
         uploaded_file = st.sidebar.file_uploader(
             "上传图片", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
@@ -116,7 +128,7 @@ if __name__ == '__main__':
             is_valid = False
     # 视频检测
     else:
-        opt.weights = 'weights/bestexp7.pt'
+        # opt.weights = 'weights/bestexp7.pt'
         # opt.weights = 'weights/yolov5s.pt'
         uploaded_file = st.sidebar.file_uploader("上传视频", type=['mp4'])
         if uploaded_file is not None:
