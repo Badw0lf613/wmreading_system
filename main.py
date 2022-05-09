@@ -97,7 +97,7 @@ if __name__ == '__main__':
     elif source_index_weights == 1:
         opt.weights = 'weights/bestexp7.pt'
     else:
-        opt.weights = 'weights/bestexp7.pt'
+        opt.weights = 'weights/yolov5s.pt'
 
     # 仪表识别
     if source_index == 0:
